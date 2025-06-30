@@ -1,0 +1,85 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.pyc
+
+# Django migrations
+**/migrations/
+!*/migrations/__init__.py
+
+# Virtual environment
+venv/
+env/
+myenv/
+ENV/
+.venv/
+.virtualenv/
+
+# Environment variables
+.env
+.env.*
+
+# Database files
+# *.sqlite3
+# *.db
+
+# Logs and debug
+*.log
+*.pot
+*.mo
+*.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+.hypothesis/
+.tox/
+.pytest_cache/
+.DS_Store
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+
+# OS files
+Thumbs.db
+ehthumbs.db
+desktop.ini
+
+# Others
+dukamarket.zip
+del.html
+index-3.html
+index.html
+production.html
+
+
+# Compiled files
+*.so
+*.egg
+*.egg-info/
+dist/
+build/
+.eggs/
+
+# Node (if using React or frontend assets)
+node_modules/
+npm-debug.log
+yarn-error.log
+
+# Static/media (if generated at runtime)
+staticfiles/
+media/
+
+# Docker
+*.pid
+docker-compose.override.yml
+
+# MyPy
+.mypy_cache/
+.dmypy.json
+dmypy.json
