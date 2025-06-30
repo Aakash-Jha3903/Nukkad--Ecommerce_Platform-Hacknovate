@@ -208,6 +208,38 @@
         "documentation": {}
     },
     {
+        "label": "migrations",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "models",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "migrations",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
+        "label": "models",
+        "importPath": "django.db",
+        "description": "django.db",
+        "isExtraImport": true,
+        "detail": "django.db",
+        "documentation": {}
+    },
+    {
         "label": "models",
         "importPath": "django.db",
         "description": "django.db",
@@ -502,6 +534,14 @@
         "documentation": {}
     },
     {
+        "label": "Sum",
+        "importPath": "django.db.models",
+        "description": "django.db.models",
+        "isExtraImport": true,
+        "detail": "django.db.models",
+        "documentation": {}
+    },
+    {
         "label": "JsonResponse",
         "importPath": "django.http",
         "description": "django.http",
@@ -726,6 +766,24 @@
         "documentation": {}
     },
     {
+        "label": "Migration",
+        "kind": 6,
+        "importPath": "Ecommerce_project.app.migrations.0016_product_tax",
+        "description": "Ecommerce_project.app.migrations.0016_product_tax",
+        "peekOfCode": "class Migration(migrations.Migration):\n    dependencies = [\n        ('app', '0015_brandname_product_brand_name'),\n    ]\n    operations = [\n        migrations.AddField(\n            model_name='product',\n            name='tax',\n            field=models.IntegerField(null=True),\n        ),",
+        "detail": "Ecommerce_project.app.migrations.0016_product_tax",
+        "documentation": {}
+    },
+    {
+        "label": "Migration",
+        "kind": 6,
+        "importPath": "Ecommerce_project.app.migrations.0017_product_packing_cost",
+        "description": "Ecommerce_project.app.migrations.0017_product_packing_cost",
+        "peekOfCode": "class Migration(migrations.Migration):\n    dependencies = [\n        ('app', '0016_product_tax'),\n    ]\n    operations = [\n        migrations.AddField(\n            model_name='product',\n            name='packing_cost',\n            field=models.IntegerField(null=True),\n        ),",
+        "detail": "Ecommerce_project.app.migrations.0017_product_packing_cost",
+        "documentation": {}
+    },
+    {
         "label": "call_calculate",
         "kind": 2,
         "importPath": "Ecommerce_project.app.templatetags.product_tags",
@@ -811,7 +869,7 @@
         "kind": 6,
         "importPath": "Ecommerce_project.app.models",
         "description": "Ecommerce_project.app.models",
-        "peekOfCode": "class Slider(models.Model):\n    DISCOUNT_DEAL = (\n        ('HOT DEALS', 'HOT DEALS'),\n        ('New Arraivels', 'New Arraivels'),\n    )\n    Image = models.ImageField(upload_to='media/slider_imgs')\n    Discount_Deal = models.CharField(choices=DISCOUNT_DEAL, max_length=100)\n    SALE = models.IntegerField()\n    Brand_Name = models.CharField(max_length=200)\n    Discount = models.IntegerField()",
+        "peekOfCode": "class Slider(models.Model):\n    DISCOUNT_DEAL = (\n        ('HOT DEALS', 'HOT DEALS'),\n        ('New Arraivels', 'New Arraivels'),\n    )\n    Image = models.ImageField(upload_to='media/slider_imgs')\n    Discount_Deal = models.CharField(choices=DISCOUNT_DEAL, max_length=100)\n    SALE = models.IntegerField()\n    Brand_Name = models.CharField(max_length=200)\n    Discount = models.IntegerField()  ",
         "detail": "Ecommerce_project.app.models",
         "documentation": {}
     },
@@ -883,7 +941,7 @@
         "kind": 6,
         "importPath": "Ecommerce_project.app.models",
         "description": "Ecommerce_project.app.models",
-        "peekOfCode": "class Product(models.Model):\n    total_quantity = models.IntegerField()\n    Availability = models.IntegerField()\n    featured_image = models.CharField(max_length=100)\n    product_name = models.CharField(max_length=100)\n    brand_name = models.ForeignKey(BrandName,on_delete=models.CASCADE,null=True)\n    price = models.IntegerField()\n    Discount = models.IntegerField()\n    # Product_information = models.TextField()\n    Product_information = RichTextField()",
+        "peekOfCode": "class Product(models.Model):\n    total_quantity = models.IntegerField()\n    Availability = models.IntegerField()\n    featured_image = models.CharField(max_length=100)\n    product_name = models.CharField(max_length=100)\n    brand_name = models.ForeignKey(BrandName,on_delete=models.CASCADE,null=True)\n    price = models.IntegerField()\n    Discount = models.IntegerField()\n    tax = models.IntegerField(null=True)\n    packing_cost = models.IntegerField(null=True)",
         "detail": "Ecommerce_project.app.models",
         "documentation": {}
     },
@@ -910,7 +968,7 @@
         "kind": 2,
         "importPath": "Ecommerce_project.app.models",
         "description": "Ecommerce_project.app.models",
-        "peekOfCode": "def create_slug(instance, new_slug=None):\n    slug = slugify(instance.product_name)\n    if new_slug is not None:\n        slug = new_slug\n    qs = Product.bjects.filter(slug=slug).order_by('-id')\n    exists = qs.exists()\n    if exists:\n        new_slug = \"%s-%s\" % (slug, qs.first().id)\n        return create_slug(instance, new_slug=new_slug)\n    return slug",
+        "peekOfCode": "def create_slug(instance, new_slug=None):\n    slug = slugify(instance.product_name)\n    if new_slug is not None:\n        slug = new_slug\n    qs = Product.objects.filter(slug=slug).order_by('-id')\n    exists = qs.exists()\n    if exists:\n        new_slug = \"%s-%s\" % (slug, qs.first().id)\n        return create_slug(instance, new_slug=new_slug)\n    return slug",
         "detail": "Ecommerce_project.app.models",
         "documentation": {}
     },
@@ -1414,7 +1472,7 @@
         "kind": 2,
         "importPath": "Ecommerce_project.Ecommerce_project.views",
         "description": "Ecommerce_project.Ecommerce_project.views",
-        "peekOfCode": "def cart_add(request, id):\n    cart = Cart(request)\n    product = Product.objects.get(id=id)\n    cart.add(product=product)\n    return redirect(\"cart_detail\")\n@login_required(login_url=\"/account/profile\")\ndef item_clear(request, id):\n    cart = Cart(request)\n    product = Product.objects.get(id=id)\n    cart.remove(product)",
+        "peekOfCode": "def cart_add(request, id):\n    cart = Cart(request)\n    product = Product.objects.get(id=id)\n    cart.add(product=product)\n    # cart.add(product=product, quantity=1)  # Add the quantity parameter with a default value\n    return redirect(\"cart_detail\")\n@login_required(login_url=\"/account/profile\")\ndef item_clear(request, id):\n    cart = Cart(request)\n    product = Product.objects.get(id=id)",
         "detail": "Ecommerce_project.Ecommerce_project.views",
         "documentation": {}
     },
@@ -1450,7 +1508,7 @@
         "kind": 2,
         "importPath": "Ecommerce_project.Ecommerce_project.views",
         "description": "Ecommerce_project.Ecommerce_project.views",
-        "peekOfCode": "def cart_clear(request):\n    cart = Cart(request)\n    cart.clear()\n    return redirect(\"cart_detail\")\n@login_required(login_url=\"/account/profile\")\ndef cart_detail(request):\n    product = Product.objects.all()\n    context = {\n        \"product\": product,\n    }",
+        "peekOfCode": "def cart_clear(request):\n    cart = Cart(request)\n    cart.clear()\n    return redirect(\"cart_detail\")\n@login_required(login_url=\"/account/profile\")\ndef cart_detail(request):\n    cart = request.session.get(\"cart\")\n    # packing_cost = sum (i['packing_cost'] for i in cart.values() if i)\n    # tax = sum (i['tax'] for i in cart.values() if i)\n    # print(packing_cost,tax)",
         "detail": "Ecommerce_project.Ecommerce_project.views",
         "documentation": {}
     },
@@ -1459,7 +1517,7 @@
         "kind": 2,
         "importPath": "Ecommerce_project.Ecommerce_project.views",
         "description": "Ecommerce_project.Ecommerce_project.views",
-        "peekOfCode": "def cart_detail(request):\n    product = Product.objects.all()\n    context = {\n        \"product\": product,\n    }\n    return render(request, 'cart/cart.html')\n    # return render(request, 'cart/cart.html',context)\n    # return render(request, 'cart/cart_detail.html',context)",
+        "peekOfCode": "def cart_detail(request):\n    cart = request.session.get(\"cart\")\n    # packing_cost = sum (i['packing_cost'] for i in cart.values() if i)\n    # tax = sum (i['tax'] for i in cart.values() if i)\n    # print(packing_cost,tax)\n    # packing_cost = sum(i['packing_cost'] for i in cart.values() if i )\n    # tax = sum(i['tax'] for i in cart.values() if i )\n    product = Product.objects.all()\n    context = {\n        \"product\": product,",
         "detail": "Ecommerce_project.Ecommerce_project.views",
         "documentation": {}
     },

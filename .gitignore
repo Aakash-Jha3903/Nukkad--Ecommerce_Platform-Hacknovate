@@ -51,12 +51,7 @@ ehthumbs.db
 desktop.ini
 
 # Others
-dukamarket.zip
-del.html
-index-3.html
-index.html
-production.html
-
+del/
 
 # Compiled files
 *.so
